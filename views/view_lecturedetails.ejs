@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lecture Details</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="https://cdn-orig.socket.io/socket.io-1.7.3.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Lecture Details</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Start Lecture</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var i = lectures.length-1; i> -1; i--) { %>
+        <tr>
+            <td><%= lectures[i].name %></td>
+            <td><%= lectures[i].date %></td>
+            <td><%= lectures[i].status %></td>
+            <td><button id="startstop" class="btn btn-info">Start Now</button></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+    <input type="hidden" value="<%= lectures[0].id %>" id="lectureID">
+    <div>
+        <div class="container">
+            <h2>Topics</h2>
+            <table class="table table-bordered" id="topicsTable">
+                <thead>
+                <tr>
+                    <th>Topic Name</th>
+                    <th>Status</th>
+                    <th>Ratting Graph</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for (var i = topics.length-1; i> -1; i--) { %>
+                <tr>
+                    <td><%= topics[i].topicName %></td>
+                    <td>Enabled</td>
+                    <td><a href="/adminhome/showgraph:<%= topics[i].id %>" class="btn btn-info">Show Graph</a></td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <h2>Add Topic</h2>
+            <form method="post" id="addtopic">
+                <div class="form-group">
+                    <label for="usr">Lecture :</label>
+                    <input type="text" readonly class="form-control" name="lecturename" id="lecturename" value= <%= lectures[0].name %> >
+                </div>
+
+                <div class="form-group" style="display: none">
+                    <input type="text" readonly class="form-control" name="lectureID" id="lecturID" value= <%= lectures[0].id %> >
+                </div>
+
+                <div class="form-group">
+                    <label for="usr">Topic Name:</label>
+                    <input type="text" class="form-control" name="topicName" id="topicName">
+                </div>
+
+                <div class="submit">
+                    <input type="submit" value="Add Lecture" name="addTopic" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <a href="/adminhome/logout" class="btn btn-primary btn-block">Logout</a>
+</div>
+
+</body>
+</html>

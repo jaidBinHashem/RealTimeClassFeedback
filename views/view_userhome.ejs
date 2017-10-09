@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>HOME</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var i = lectures.length - 1; i > -1; i--) { %>
+        <tr>
+            <td><a href="/userhome/joinclass:<%= lectures[i].id %>"><%= lectures[i].name %></a></td>
+            <td><%= lectures[i].date %></td>
+            <td><%= lectures[i].status %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <a href="/userhome/logout" class="btn btn-primary btn-block">Logout</a>
+</div>
+
+</body>
+</html>

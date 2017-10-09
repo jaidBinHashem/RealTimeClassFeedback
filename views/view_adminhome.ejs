@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>HOME</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (var i = lectures.length - 1; i > -1; i--) { %>
+        <tr>
+            <td><a href="/adminhome/lecturedetails:<%= lectures[i].id %>"><%= lectures[i].name %></a></td>
+            <td><%= lectures[i].date %></td>
+            <td><%= lectures[i].status %></td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <br>
+
+    <div>
+        <div class="container">
+            <h2>Add Lecture</h2>
+            <form method="post" id="addtopic">
+                <div class="form-group" style="display: none">
+                    <input type="text" readonly class="form-control" name="lectureID" id="lecturID" value= <%= lectures[0].id %> >
+                </div>
+
+                <div class="form-group">
+                    <label for="usr">Lecture Name:</label>
+                    <input type="text" class="form-control" name="topicName" id="topicName">
+                </div>
+
+                <div class="submit">
+                    <input type="submit" value="Add Topic" name="addTopic" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <a href="/adminhome/logout" class="btn btn-primary btn-block">Logout</a>
+</div>
+
+</body>
+</html>
